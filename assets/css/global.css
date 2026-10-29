@@ -1,0 +1,566 @@
+/* =============================================================
+   adamishere.org — starter stylesheet
+   Organized to match the Textpattern forms/pages already built.
+   Everything hangs off the custom properties below — change those
+   first, then dig into a section only if you want something the
+   variables can't reach.
+   ============================================================= */
+
+:root {
+    /* --- Color --- */
+    --color-bg: #fdfdfb;
+    --color-bg-alt: #f4f3ef;
+    --color-text: #222222;
+    --color-text-muted: #6b6b6b;
+    --color-border: #e2e0d9;
+    --color-accent: #a8511f;
+    --color-accent-hover: #7e3c15;
+    --color-link: #2b5f8a;
+    --color-link-hover: #1c405e;
+
+   /* --- Type --- */
+    --font-body: Geneva, -apple-system-ui-serif, ui-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: ui-serif, Georgia, "Times New Roman", serif;
+    --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --font-size-base: 1.0625rem;
+    --line-height-base: 1.65;
+
+    /* --- Spacing / layout --- */
+    --space-xs: 0.4rem;
+    --space-sm: 0.8rem;
+    --space-md: 1.6rem;
+    --space-lg: 2.8rem;
+    --space-xl: 4.5rem;
+    --max-width: 42rem;
+    --radius: 4px;
+}
+
+/* =============================================================
+   Reset & base
+   ============================================================= */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a {
+    color: var(--color-link);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
+}
+
+a:hover { color: var(--color-link-hover); }
+
+h1, h2, h3, h4, h5 {
+    font-family: var(--font-heading);
+    line-height: 1.25;
+    font-weight: 600;
+    margin: 0 0 var(--space-sm);
+}
+
+h2 { font-size: 1.6rem; margin-top: var(--space-lg); }
+h3 { font-size: 1.15rem; }
+h4 { font-size: 1rem; }
+
+p { margin: 0 0 var(--space-md); }
+
+ul, ol { padding-left: 1.2em; }
+
+time { color: var(--color-text-muted); }
+
+/* =============================================================
+   Layout shell — .wrapper > .container > #main
+   ============================================================= */
+
+.wrapper {
+    padding: 0 var(--space-md);
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+#main {
+    padding: var(--space-lg) 0 var(--space-xl);
+}
+
+/* =============================================================
+   Site header / nav — site_header.txp (Usability Optimized)
+   ============================================================= */
+
+header[itemtype$="WPHeader"] {
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+/* Base header layout matching your layout width */
+header[itemtype$="WPHeader"] .header-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Keeps it left-aligned by default on mobile */
+    gap: var(--space-sm);
+}
+
+header[itemtype$="WPHeader"] h1 {
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+header[itemtype$="WPHeader"] h1 a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+/* Nav container styling */
+header[itemtype$="WPHeader"] nav {
+    width: 100%;
+    /* Enables horizontal finger-swipe scrolling on mobile viewports */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Clear default browser scrollbars for clean UI look */
+    scrollbar-width: none; 
+}
+header[itemtype$="WPHeader"] nav::-webkit-scrollbar {
+    display: none;
+}
+
+header[itemtype$="WPHeader"] nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: nowrap; /* Forces links onto one line on mobile instead of wrapping */
+    gap: var(--space-md);
+}
+
+header[itemtype$="WPHeader"] nav li {
+    flex: 0 0 auto; /* Keeps navigation targets from compressing */
+}
+
+header[itemtype$="WPHeader"] nav a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    display: block;
+    white-space: nowrap; /* Prevents text formatting from splitting onto multiple lines */
+}
+
+header[itemtype$="WPHeader"] nav a:hover {
+    border-bottom-color: var(--color-border);
+}
+
+header[itemtype$="WPHeader"] nav li.active a {
+    border-bottom-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+/* Desktop Breakpoint: Restores pristine balance once room allows */
+@media (min-width: 48rem) {
+    header[itemtype$="WPHeader"] .header-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: baseline; /* Changed from 'center' to keep it locked left/baseline */
+    }
+    
+    header[itemtype$="WPHeader"] nav {
+        width: auto;
+        overflow-x: visible;
+    }
+    
+    header[itemtype$="WPHeader"] nav ul {
+        justify-content: flex-end;
+    }
+}
+
+/* ==========================================================================
+   RESPONSIVE HEADER ADJUSTMENTS
+   ========================================================================== */
+
+@media (max-width: 600px) {
+    .header-container {
+        flex-direction: column;   /* Stacks title above navigation */
+        align-items: flex-start;  /* Forces everything to align to the left side */
+        gap: var(--space-sm);     /* Adds a clean gap between the rows */
+    }
+
+    .logo-link {
+        left: 0;                  /* Resets the negative left offset on mobile screens */
+        top: 0;
+    }
+    
+    .header-container nav ul {
+        flex-wrap: wrap;          /* Keeps nav links clean if mobile screen is ultra-narrow */
+        gap: var(--space-sm);     /* Tightens spacing for small screens */
+    }
+}
+
+/* ==========================================================================
+   MINI-HEADER GLOBAL STRUCTURAL STYLES
+   ========================================================================== */
+
+/* Container for the mini header */
+.header-mini {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Puts logo on left, links on right */
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 2.5rem;
+    width: 100%;
+    max-width: 800px; /* Matches your whitepapers, links, and notes width */
+}
+
+/* Logo styling */
+.logo.small-logo {
+    width: 35px;
+    height: auto;
+    display: block;
+}
+
+/* Navigation links */
+.mini-nav-links {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.mini-link {
+    text-decoration: none;
+    color: #657786; /* Neutral grey from your notes layout */
+    transition: color 0.2s ease;
+}
+
+.mini-link:hover {
+    color: #4c9a9e; /* Uses your accent color on hover */
+}
+
+.mini-separator {
+    margin: 0 8px;
+    color: #ccc;
+}
+
+/* Dark Mode Integration */
+@media (prefers-color-scheme: dark) {
+    .header-mini {
+        border-bottom-color: #444;
+    }
+    .mini-link {
+        color: #aaa;
+    }
+    .mini-link:hover {
+        color: #66b3ff;
+    }
+    .mini-separator {
+        color: #555;
+    }
+}
+
+/* ==========================================================================
+   STANDARD HEADER FIXES (Flexbox Alignment)
+   ========================================================================== */
+
+/* 1. Ensure the outer container is a flex container and spaces items correctly */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Pushes the title/logo left, and nav menu right */
+    flex-wrap: wrap;               /* Allows clean wrapping on smaller screens */
+    gap: 1.5rem;                    /* Prevents clashing if they get close */
+    width: 100%;
+}
+
+/* 2. Style the Logo & Site Title anchor to be a nested flexbox */
+.logo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;                      /* Spacing between wolf logo and text */
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+/* 3. Constrain the size of the logo in the main header */
+.logo.main-logo {
+    width: 45px;                    /* Restricts logo size so it doesn't push the header open */
+    height: auto;
+    display: block;
+}
+
+/* 4. Ensure your navigation <ul> stays clean and aligned */
+.header-container nav ul {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 1.5rem;                    /* Spacing between your navigation items */
+}
+
+/* =============================================================
+   Site footer — site_footer.txp
+   ============================================================= */
+
+footer {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-md);
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+footer .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-sm);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm) var(--space-md);
+}
+
+/* =============================================================
+   Home page specific — home_layout.txp
+   ============================================================= */
+
+section.welcome {
+    margin-bottom: var(--space-lg);
+}
+
+section.recent-links,
+section.recent-writing,
+section.recent-notes {
+    margin-bottom: var(--space-lg);
+}
+
+.article-entry {
+    margin-bottom: 1em;
+}
+
+.inline-category {
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-left: 0.5em;
+}
+
+.meta-divider {
+    color: #888;
+    margin: 0 0.5em;
+}
+
+.entry-date-small {
+    font-size: 0.9em;
+}
+
+/* =============================================================
+   Article listings — writing_list_item.txp / recent_writing_item.txp
+   ============================================================= */
+
+ul.writing-list,
+ul.category-list,
+ul.reading-list {
+    list-style: none;
+    padding: 0;
+}
+
+.category-heading {
+    margin-top: var(--space-lg);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--color-border);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+}
+
+li.article-entry {
+    margin-bottom: var(--space-sm);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px dashed var(--color-border);
+}
+
+li.article-entry:last-child {
+    border-bottom: none;
+}
+
+.meta-divider {
+    color: var(--color-text-muted);
+    margin: 0 0.5em;
+}
+
+.inline-category {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-left: 0.5em;
+}
+
+p.meta {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-xs);
+}
+
+/* =============================================================
+   Paginator — used across section_layout.txp
+   ============================================================= */
+
+nav.paginator {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9rem;
+}
+
+/* =============================================================
+   Individual article / blog post view — section_layout.txp permalink branch
+   ============================================================= */
+
+article[itemtype$="BlogPosting"] h2 {
+    margin-top: 0;
+}
+
+article[itemtype$="BlogPosting"] > .meta {
+    margin-bottom: var(--space-lg);
+}
+
+/* =============================================================
+   Comments — comments_display.txp / comment_form.txp
+   ============================================================= */
+
+#comments-head,
+#comments-form {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+}
+
+ol.comments-list {
+    list-style: none;
+    padding: 0;
+}
+
+article.comments {
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+article.comments-author {
+    background: var(--color-bg-alt);
+    padding: var(--space-md);
+    border-radius: var(--radius);
+    border-bottom: none;
+}
+
+.comment-author {
+    font-weight: 600;
+}
+
+.is-author {
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    font-weight: normal;
+    margin-left: 0.4em;
+}
+
+.comment-anchor {
+    margin-left: 0.6em;
+    font-size: 0.85rem;
+}
+
+.footnote {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin: var(--space-xs) 0 var(--space-sm);
+}
+
+#cpreview {
+    font-style: italic;
+    color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   TABLES (Textile-generated content tables)
+   ========================================================================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 var(--space-md);
+    font-size: 0.95rem;
+}
+
+th, td {
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background: var(--color-bg-alt);
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+/* =============================================================
+   Responsive tweaks
+   ============================================================= */
+
+@media (max-width: 30rem) {
+    :root {
+        --font-size-base: 1rem;
+    }
+
+    nav.paginator {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+}
+
+
+/* ==========================================================================
+   INTEGRATED DARK MODE OVERRIDES (The Dark Mode Canvas Alignment)
+   Scope: Leverages established dark colors seamlessly without text inversion bugs
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+    .section-notes article.note,
+    article.single-entry.type-notes {
+        box-shadow: none;
+    }
+
+    .section-reading .entry-content h2 {
+        border-bottom-color: var(--color-text);
+    }
+
+    .page-now .entry-content details > *:not(summary),
+    .page-about .entry-content details > *:not(summary) {
+        border-left-color: var(--color-border);
+    }
+}

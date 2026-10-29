@@ -1,0 +1,186 @@
+/* ==========================================================================
+   SECTION: LINKS (INDIVIDUAL PERMALINK VIEW)
+   Activates only via: <body class="permalink-page section-links">
+   ========================================================================== */
+
+/* --- Root Variables for Comments System --- */
+.permalink-page.section-links {
+    --meh-default-accent: #4c9a9e; /* Teal accent matching your link colors */
+    --meh-default-background: transparent; 
+    --meh-default-foreground: #4a4a4a; /* Matches the article body text */
+    --meh-default-spacing: 1.2rem;
+    --meh-default-border-radius: 4px; /* Slight rounding to soften the box shadow */
+    --meh-default-border-color: #eee;
+    --meh-default-success: #3a7271;
+    --meh-default-error: #b34a4a;
+}
+
+article.link-entry {
+    margin-bottom: var(--space-lg) !important; /* overrides inline style in the forms */
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+}
+
+article.link-entry:last-child {
+    border-bottom: none;
+}
+
+article.link-entry h3 {
+    margin-bottom: var(--space-xs);
+}
+
+.link-context {
+    color: var(--color-text-muted);
+}
+
+/* --- Section Specific Body Override --- */
+body.permalink-page.section-links {
+    font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+    background-color: #f7f7f3; 
+    color: #4a4a4a; 
+    line-height: 1.8; 
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    min-height: 100vh;
+}
+
+/* --- Article Scaffolding --- */
+.permalink-page.section-links article.single-link {
+    background-color: #ffffff; 
+    padding: 2.5rem; 
+    max-width: 800px; 
+    width: 100%;
+    margin: 0 auto; 
+    box-sizing: border-box;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Header structural elements within the Single Link template */
+.permalink-page.section-links article.single-link h2 {
+    font-size: 2.2rem; 
+    font-weight: 700;
+    margin: 0 0 1.5rem 0;
+    color: #2e3a47; 
+    letter-spacing: 0.5px; 
+    line-height: 1.3;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+}
+
+.permalink-page.section-links article.single-link h2 a {
+    color: #2e3a47;
+    text-decoration: none;
+}
+
+.permalink-page.section-links article.single-link .meta {
+    font-size: 0.9rem;
+    color: #777; 
+    display: block;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* Article Body/Context Layout */
+.permalink-page.section-links article.single-link div[itemprop="articleBody"] {
+    font-size: 1.2rem; 
+    color: #4a4a4a; 
+    margin-top: 1.5rem; 
+    line-height: 1.8; 
+}
+
+/* Links inside the commentary text */
+.permalink-page.section-links article.single-link div[itemprop="articleBody"] a {
+    color: #4c9a9e; 
+    text-decoration: underline;
+}
+
+.permalink-page.section-links article.single-link div[itemprop="articleBody"] a:hover {
+    text-decoration: none;
+    color: #3a7271; 
+}
+
+/* Footer / Source elements */
+.permalink-page.section-links article.single-link .permalink-meta {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    font-size: 1rem;
+    color: #7a7a7a;
+}
+
+.permalink-page.section-links article.single-link .permalink-meta a {
+    color: #4c9a9e;
+    font-weight: bold;
+    word-break: break-all;
+}
+
+/* --- Comments Area Integration --- */
+.permalink-page.section-links .comments-area {
+    width: 100%;
+    max-width: 800px;
+    margin: 5rem auto 2rem auto;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.permalink-page.section-links .comments-invite {
+    font-size: 1rem;
+    color: #7a7a7a;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
+    border-left: 3px solid #4c9a9e;
+    font-style: italic;
+}
+
+/* --- Dark Mode Handling --- */
+@media (prefers-color-scheme: dark) {
+    .permalink-page.section-links {
+        --meh-default-accent: #66b3ff;
+        --meh-default-foreground: #d0d0d0;
+        --meh-default-border-color: #444;
+    }
+
+    body.permalink-page.section-links {
+        background-color: #222; 
+        color: #e0e0e0; 
+    }
+
+    .permalink-page.section-links article.single-link {
+        background-color: #2d3741; 
+        border: none;
+    }
+
+    .permalink-page.section-links article.single-link h2,
+    .permalink-page.section-links article.single-link h2 a {
+        color: #ffffff; 
+    }
+
+    .permalink-page.section-links article.single-link .meta {
+        color: #aaa;
+    }
+
+    .permalink-page.section-links article.single-link div[itemprop="articleBody"] {
+        color: #d0d0d0; 
+    }
+
+    .permalink-page.section-links article.single-link div[itemprop="articleBody"] a,
+    .permalink-page.section-links article.single-link .permalink-meta a {
+        color: #66b3ff; 
+    }
+    
+    .permalink-page.section-links .comments-area {
+        background-color: #2d3741;
+        border: none;
+    }
+
+    .permalink-page.section-links .comments-invite {
+        color: #aaa;
+        border-left-color: #66b3ff;
+    }
+}

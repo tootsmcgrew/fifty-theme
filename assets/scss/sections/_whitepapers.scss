@@ -1,0 +1,118 @@
+body.category-white-papers {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+body.category-white-papers .header-mini {
+    border-bottom: 1px solid #eee;
+}
+
+body.category-white-papers .mini-link {
+    color: #657786;
+}
+
+body.category-white-papers footer[role="contentinfo"] {
+    border-top: none;
+    margin-top: 40px;
+    padding-top: 20px;
+    font-size: 14px;
+    color: #777;
+    text-align: center;
+    width: 100%;
+}
+
+body.category-white-papers article.single-article {
+    max-width: 800px;
+    padding: 60px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    font-family: 'Gill Sans', 'Helvetica Neue', sans-serif;
+}
+
+body.category-white-papers article.single-article::before {
+    content: "For immediate release: OFFICIAL WHITE PAPER";
+    display: block;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #555;
+    margin-bottom: 20px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+body.category-white-papers h1[itemprop="headline"] {
+    font-family: 'Gill Sans', 'Helvetica Neue', sans-serif;
+    font-size: 2.5rem;
+    color: #111;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+    text-align: center;
+}
+
+body.category-white-papers .meta {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #666;
+    font-weight: 700;
+    border-bottom: 2px solid #333;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    display: block;
+    text-align: center;
+}
+
+body.category-white-papers [itemprop="articleBody"] p {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 1.125rem;
+    margin-bottom: 25px;
+    text-align: justify;
+    color: #444;
+}
+
+body.category-white-papers #comments-head {
+    max-width: 800px;
+    margin: 5rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px dashed #ccc;
+}
+
+body.category-white-papers #comments-form .comments-wrapper > p:first-of-type {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 2rem;
+    padding: 1rem 1.25rem;
+    border-left: 3px solid #333;
+    background-color: #f0f0f0;
+}
+
+@media (prefers-color-scheme: dark) {
+    body.category-white-papers {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+
+    body.category-white-papers .header-mini { border-bottom-color: #38444d; }
+    body.category-white-papers .mini-link { color: #8899a6; }
+
+    body.category-white-papers article.single-article {
+        background-color: #1e1e1e;
+        border-color: #333;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+    body.category-white-papers h1[itemprop="headline"] { color: #ffffff; }
+    body.category-white-papers .meta { border-bottom-color: #e0e0e0; }
+    body.category-white-papers [itemprop="articleBody"] p { color: #cccccc; }
+
+    body.category-white-papers #comments-head { border-top-color: #444; }
+    body.category-white-papers #comments-form .comments-wrapper > p:first-of-type {
+        color: #aaa;
+        border-left-color: #e0e0e0;
+        background-color: #1a1a1a;
+    }
+}

@@ -1,0 +1,27 @@
+<txp:output_form form="html_head" />
+<body class="error-page" itemscope itemtype="https://schema.org/WebPage">
+
+    <txp:output_form form="site_header" />
+
+    <div class="wrapper">
+        <div class="container">
+            <main id="main" aria-label="<txp:text item="main_content" />">
+                
+                <section class="error-details">
+                    <h1><txp:error_status /></h1>
+                    <p class="error-msg"><txp:error_message /></p>
+                </section>
+
+                <section class="error-nav">
+                    <h2>Looking for something?</h2>
+                    <p>The page you requested might have moved, or the link might be broken.</p>
+                    <p><a href="<txp:site_url />">Return home</a> or check out recent writing and notes on the front page.</p>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <txp:output_form form="site_footer" />
+</body>
+</html>

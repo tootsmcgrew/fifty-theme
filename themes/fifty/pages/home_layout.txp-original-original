@@ -1,0 +1,45 @@
+<txp:output_form form="html_head" />
+<body class="front-page" itemscope itemtype="https://schema.org/WebPage">
+
+    <txp:output_form form="site_header" />
+
+    <div class="wrapper">
+        <div class="container">
+            <main id="main" aria-label="<txp:text item="main_content" />">
+                
+                <section class="welcome" itemprop="description">
+                    <h2>Welcome</h2>
+                    <p>Welcome to my hand-crafted home on the web. Stay awhile and thanks for stopping by.</p>
+                </section>
+
+                <section class="recent-links" aria-label="Recent Links">
+                    <h2>Recent and good links</h2>
+                    <txp:linklist category="share" limit="3" sort="date desc">
+                        <article class="link-entry">
+                            <p class="meta"><strong><txp:link_date format="%B %d, %Y - %I:%M %p" /></strong></p>
+                            <p><a href="<txp:link_url />" rel="external"><txp:link_name /></a></p>
+                            
+                            <txp:link_description wraptag="div" class="link-context" />
+                        </article>
+                    </txp:linklist>
+                </section>
+
+                <section class="recent-writing" aria-label="Recent Essays">
+                    <h2>Recent Writing</h2>
+                    <ul class="writing-list">
+                        <txp:article_custom section="articles" limit="5" form="recent_writing_item" />
+                    </ul>
+                </section>
+
+                <section class="recent-notes" aria-label="Recent Notes">
+                    <h2>Recent Notes</h2>
+                    <txp:article_custom section="notes" limit="12" form="notes_home_listing" />
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <txp:output_form form="site_footer" />
+</body>
+</html>

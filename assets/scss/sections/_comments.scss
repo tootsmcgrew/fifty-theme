@@ -1,0 +1,109 @@
+/* ==========================================================================
+   Article & Stream Comments Section
+   ========================================================================== */
+
+#comments-head,
+#comments-form {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+}
+
+ol.comments-list {
+    list-style: none;
+    padding: 0;
+}
+
+article.comments {
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--color-border);
+
+    &.comments-author {
+        background: var(--color-bg-alt);
+        padding: var(--space-md);
+        border-radius: var(--radius);
+        border-bottom: none;
+    }
+}
+
+.comment-author {
+    font-weight: 600;
+}
+
+.is-author {
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    font-weight: normal;
+    margin-left: 0.4em;
+}
+
+.comment-anchor {
+    margin-left: 0.6em;
+    font-size: 0.85rem;
+}
+
+.footnote {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin: var(--space-xs) 0 var(--space-sm);
+}
+
+/* Rendered Textile / Markdown Blockquotes inside comments */
+.comment-message {
+    blockquote {
+        margin: var(--space-sm) 0;
+        padding: var(--space-xs) var(--space-sm);
+        border-left: 3px solid var(--color-border);
+        background: var(--color-bg-alt);
+        font-style: italic;
+        font-size: 0.95rem;
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
+/* Quote Action Button */
+.comment-actions {
+    margin-top: var(--space-xs);
+}
+
+.btn-quote {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    padding: var(--space-xs) var(--space-sm);
+    font-size: 0.8rem;
+    font-family: inherit;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.15s ease-in-out;
+
+    &:hover {
+        background: var(--color-bg-alt);
+    }
+}
+
+#cpreview {
+    font-style: italic;
+    color: var(--color-text-muted);
+}
+
+/* Shared Comment Excerpt Truncation */
+.recent-comment-excerpt {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: var(--space-xs) 0;
+    padding-left: var(--space-xs);
+    border-left: 3px solid var(--color-border);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+
+    p {
+        margin: 0;
+    }
+}

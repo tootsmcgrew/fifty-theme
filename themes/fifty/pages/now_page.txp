@@ -1,0 +1,16 @@
+<txp:output_form form="html_head" />
+<body class="now-page" itemscope itemtype="https://schema.org/WebPage">
+
+    <txp:output_form form="site_header" />
+
+    <div class="wrapper">
+        <div class="container">
+            <main id="main">
+                <txp:article_custom section="now" limit="1" form="now_form" />
+            </main>
+        </div>
+    </div>
+
+    <txp:output_form form="site_footer" />
+</body>
+</html>

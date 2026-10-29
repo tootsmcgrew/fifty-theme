@@ -1,0 +1,61 @@
+/* ==========================================================================
+   SECTION: READING LOGS (Scholarly Hardback Typographic Treatment)
+   Scope: Automatically applies to the book logging pipeline (.section-reading)
+   ========================================================================== */
+
+.section-reading article.type-reading {
+    width: 100%;
+    max-width: var(--max-width);
+    background-color: transparent;
+}
+
+.section-reading article.type-reading .entry-header {
+    margin-bottom: var(--space-lg);
+    text-align: left;
+}
+
+.section-reading article.type-reading .entry-title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--color-text);
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* Custom internal headings for reviews */
+.section-reading .entry-content h2 {
+    font-size: 1.6rem;
+    border-bottom: 2px solid var(--color-text);
+    font-variant: small-caps;
+    margin-top: var(--space-lg);
+    padding-bottom: 0.2rem;
+    font-weight: 600;
+}
+
+/* Classic publishing rules: Indent consecutive blocks, skip the first */
+.section-reading .entry-content p {
+    text-indent: 1.5rem;
+    margin-bottom: 1.2rem;
+    text-align: justify;
+}
+
+.section-reading .entry-content p:first-of-type, 
+.section-reading .entry-content h2 + p, 
+.section-reading .entry-content h3 + p {
+    text-indent: 0;
+}
+
+/* Scholarly citation layouts */
+.section-reading blockquote + cite,
+.section-reading blockquote + p cite {
+    display: block;
+    font-size: 0.9em;
+    text-align: right;
+    margin-top: var(--space-xs);
+    color: var(--color-text-muted); 
+}
+
+.section-reading blockquote + cite::before,
+.section-reading blockquote + p cite::before {
+    content: "— "; 
+}

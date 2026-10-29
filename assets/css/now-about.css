@@ -1,0 +1,79 @@
+/* ==========================================================================
+   SECTION: NOW & ABOUT PAGES (Stark Minimalist Status Board)
+   Scope: Targets specific system pages (.page-now, .page-about)
+   ========================================================================== */
+
+.page-now #main, 
+.page-about #main {
+    font-family: Palatino, Georgia, serif;
+}
+
+/* Clean, system status typography for primary title */
+.page-now .entry-title,
+.page-about .entry-title {
+    font-family: var(--font-body);
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    margin: 0 0 var(--space-xs) 0;
+}
+
+/* Monospace timestamp log badge */
+.page-now .entry-date,
+.page-about .entry-date {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background-color: var(--color-bg-alt); 
+    border-radius: var(--radius);
+}
+
+/* Editorial subheaders */
+.page-now .entry-content h2,
+.page-about .entry-content h2 {
+    font-weight: normal;
+    font-style: italic;
+    font-size: 1.75rem;
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: var(--space-xs);
+}
+
+.page-now .entry-content h3,
+.page-about .entry-content h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-xs);
+}
+
+.page-now .entry-content ul,
+.page-about .entry-content ul {
+    list-style-type: square; 
+    padding-left: 1.5rem;
+    margin-bottom: var(--space-md);
+}
+
+.last-updated {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+/* Asymmetric details drawer grouping system */
+.page-now .entry-content details > *:not(summary),
+.page-about .entry-content details > *:not(summary) {
+    margin-top: var(--space-xs);
+    padding-left: var(--space-sm); 
+    border-left: 2px solid var(--color-border); 
+    color: var(--color-text-muted); 
+    font-size: 1.05rem; 
+}

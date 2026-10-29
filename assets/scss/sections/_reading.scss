@@ -1,0 +1,116 @@
+body.permalink-page.section-reading {
+    font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+    background-color: #f8f5f0;
+    color: #2c2c2c;
+    line-height: 1.75;
+}
+
+article.single-book {
+    width: 100%;
+    max-width: 750px;
+    background-color: transparent;
+}
+
+article.single-book h2[itemprop="itemReviewed"] {
+    margin: 0;
+    text-align: left;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #111;
+    line-height: 1.2;
+}
+
+article.single-book .entry-date {
+    display: block;
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+    color: #666;
+    font-style: italic;
+}
+
+[itemprop="reviewBody"] h2 {
+    font-size: 1.8rem;
+    border-bottom: 2px solid #444;
+    font-variant: small-caps;
+    margin-top: 2rem;
+    padding-bottom: 0.2rem;
+}
+
+[itemprop="reviewBody"] p {
+    text-indent: 1.5rem;
+    margin-bottom: 1.2rem;
+    text-align: justify;
+}
+
+[itemprop="reviewBody"] p:first-of-type,
+[itemprop="reviewBody"] h2 + p,
+[itemprop="reviewBody"] h3 + p {
+    text-indent: 0;
+}
+
+article.single-book blockquote {
+    margin: 2rem 0;
+    padding: 1rem 2rem;
+    border-left: 4px solid #444;
+    background-color: #efede8;
+    font-style: italic;
+    color: #444;
+}
+
+article.single-book blockquote + cite,
+article.single-book blockquote + p cite,
+article.single-book figure cite {
+    display: block;
+    font-size: 0.9em;
+    text-align: right;
+    margin-top: 0.5rem;
+    color: #555;
+}
+
+article.single-book blockquote + cite::before,
+article.single-book blockquote + p cite::before {
+    content: "— ";
+}
+
+.reading-entry-excerpt {
+    margin-top: 0.35rem;
+    font-style: italic;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.reading-entry-excerpt p {
+    margin: 1rem; /* Prevents unwanted extra paragraph margins inside list items */
+}
+
+@media (prefers-color-scheme: dark) {
+    body.permalink-page.section-reading {
+        background-color: #1a1a1a;
+        color: #d1d1d1;
+    }
+    article.single-book h2[itemprop="itemReviewed"] {
+        color: #eee;
+    }
+
+    [itemprop="reviewBody"] h2 {
+        border-bottom-color: #888;
+        color: #fff;
+    }
+
+    article.single-book blockquote {
+        background-color: #252525;
+        border-left-color: #888;
+        color: #bbb;
+    }
+
+    article.single-book blockquote + cite,
+    article.single-book blockquote + p cite,
+    article.single-book figure cite {
+        color: #cccccc;
+    }
+
+    .section-reading .entry-content h2 {
+        border-bottom-color: var(--color-text);
+    }
+}

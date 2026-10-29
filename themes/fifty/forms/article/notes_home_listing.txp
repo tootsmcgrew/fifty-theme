@@ -1,0 +1,23 @@
+<article class="note" itemscope itemtype="https://schema.org/SocialMediaPosting">
+    
+    <header class="entry-header">
+        <h3 class="entry-title" itemprop="headline">
+            <a href="<txp:permlink />"><txp:posted format="%B %d, %Y" /> at <txp:posted format="%I:%M %p" /></a>
+        </h3>
+    </header>
+
+    <div class="note-content" itemprop="sharedContent">
+        <txp:body />
+    </div>
+
+    <txp:if_article_category>
+        <p class="meta">
+            Categories: 
+            <txp:category1 title="1" link="1" />
+            <txp:if_article_category number="2">
+                , <txp:category2 title="1" link="1" />
+            </txp:if_article_category>
+        </p>
+    </txp:if_article_category>
+    
+</article>

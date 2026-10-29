@@ -1,0 +1,5 @@
+<article class="link-entry" style="margin-bottom: 2em;">
+    <p class="meta"><strong><txp:posted format="%B %d, %Y" /></strong></p>
+    <h3><a href="<txp:custom_field name="external_url" />"><txp:title /></a></h3>
+    <txp:body />
+</article>

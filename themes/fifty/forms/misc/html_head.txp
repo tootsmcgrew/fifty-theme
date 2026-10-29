@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="<txp:lang />" dir="<txp:text item="lang_dir" />">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title><txp:page_title /></title>
+
+    <!-- CSS (Pulls from Presentation > Styles) -->
+    <link rel="stylesheet" href="/assets/css/main.min.css?v=1.0">
+
+    <meta name="generator" content="Textpattern CMS">
+
+    <!-- Search Engine crawling logic -->
+    <txp:if_search>
+        <meta name="robots" content="none">
+    <txp:else />
+        <txp:if_author>
+            <meta name="robots" content="noindex, follow">
+        <txp:else />
+            <txp:meta_description />
+            <txp:if_category>
+                <meta name="robots" content="noindex, follow">
+            <txp:else />
+                <txp:variable name="page" value='<txp:page_url type="pg" />' />
+                <txp:if_variable name="page" value="1">
+                    <meta name="robots" content="index, follow">
+                    <link class="canonical" href="<txp:site_url />">
+                    <script type="application/ld+json">
+                        {
+                            "@context": "https://schema.org",
+                            "@type": "WebSite",
+                            "headline": "<txp:site_name escape="json" />",
+                            <txp:if_description>"description": "<txp:meta_description format="" escape="json" />",</txp:if_description>
+                            "url": "<txp:site_url escape="json" />"
+                        }
+                    </script>
+                <txp:else />
+                    <meta name="robots" content="noindex, follow">
+                </txp:if_variable>
+            </txp:if_category>
+        </txp:if_author>
+    </txp:if_search>
+
+    <txp:feed_link flavor="atom" format="link" label="Atom feed" />
+    <txp:feed_link flavor="rss" format="link" label="RSS feed" />
+</head>

@@ -1,0 +1,19 @@
+<article class="note" id="article-<txp:article_id />">
+    <header>
+        <h2><a href="<txp:permlink />"><txp:title /></a></h2>
+        <p class="meta"><txp:posted /></p>
+    </header>
+    
+    <div class="body">
+        <txp:body />
+    </div>
+    <txp:if_article_category>
+        <p class="meta">
+            Categories: 
+            <txp:category1 title="1" link="1" />
+            <txp:if_article_category number="2">
+                , <txp:category2 title="1" link="1" />
+            </txp:if_article_category>
+        </p>
+    </txp:if_article_category>
+</article>

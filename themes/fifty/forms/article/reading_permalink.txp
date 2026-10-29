@@ -1,0 +1,5 @@
+<article class="single-book" itemscope itemtype="https://schema.org/Review">
+    <h2 itemprop="itemReviewed"><txp:title /></h2>
+    <time class="entry-date" itemprop="datePublished">Published on <txp:posted /></time>
+    <div itemprop="reviewBody"><txp:body /></div>
+</article>

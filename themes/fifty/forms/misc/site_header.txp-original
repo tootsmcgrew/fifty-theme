@@ -1,0 +1,28 @@
+    <!-- ========================================== -->
+    <!-- STANDARD SITE HEADER (Archive / Index Views) -->
+    <!-- ========================================== -->
+    <header itemscope itemtype="https://schema.org/WPHeader">
+        <div class="header-container">
+            <h1 itemprop="headline">
+                <a href="<txp:site_url />" class="logo-link">
+                    <!-- Added the wolf logo directly into your main h1 title anchor -->
+                    <txp:image class="logo main-logo" escape="" id="4" />
+                    <txp:site_name />
+                </a>
+            </h1>
+            
+            <nav aria-label="<txp:text item='site_nav' />" itemscope itemtype="https://schema.org/SiteNavigationElement">
+                <!-- The dynamic section loop -->
+                <txp:section_list include_default="1" default_title='<txp:text item="home" />' wraptag="ul" break="">
+                    
+                    <!-- Adds class="active" to the menu item of the page you are currently viewing -->
+                    <li<txp:if_section name='<txp:section />'> class="active"</txp:if_section>>
+                        <a itemprop="url" href="<txp:section url='1' />">
+                            <span itemprop="name"><txp:section title="1" /></span>
+                        </a>
+                    </li>
+                    
+                </txp:section_list>
+            </nav>
+        </div>
+    </header>

@@ -1,0 +1,102 @@
+<txp:if_comments>
+    <section id="comments-head">
+        <h3>
+            <txp:text item="comments" />
+        </h3>
+        <ol class="comments-list">
+            <txp:comments wraptag="" break="li" form="comments" />
+
+            <txp:if_comments_preview>
+                <li id="cpreview-container">
+                    <p id="cpreview">
+                        <txp:text item="press_preview_then_submit" />
+                    </p>
+                    <txp:comments_preview wraptag="" form="comments" />
+                </li>
+            </txp:if_comments_preview>
+        </ol>
+<txp:else />
+    <txp:if_comments_preview>
+        <section id="comments-head">
+            <h3>
+                <txp:text item="comments" />
+            </h3>
+            <ol class="comments-list">
+                <li id="cpreview-container">
+                    <p id="cpreview">
+                        <txp:text item="press_preview_then_submit" />
+                    </p>
+                    <txp:comments_preview wraptag="" form="comments" />
+                </li>
+            </ol>
+    <txp:else />
+        <txp:if_comments_allowed>
+            <section id="comments-head">
+                <h3>
+                    <txp:text item="comments" />
+                </h3>
+                <p>
+                    <txp:text item="no_comments" />
+                </p>
+        </txp:if_comments_allowed>
+    </txp:if_comments_preview>
+</txp:if_comments>
+
+<txp:if_comments_allowed>
+    <section id="comments-form">
+        <h3>
+            <txp:comments_invite showcount="0" textonly showalways />
+        </h3>
+        <txp:comments_form form="comment_form" />
+    </section>
+<txp:else />
+    <txp:if_comments>
+        <p>
+            <strong>
+                <txp:text item="comments_expired" />
+            </strong>
+        </p>
+    </txp:if_comments>
+</txp:if_comments_allowed>
+
+<txp:if_comments>
+    </section>
+<txp:else />
+    <txp:if_comments_allowed>
+        </section>
+    </txp:if_comments_allowed>
+</txp:if_comments>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const textarea = document.getElementById('comment-message-body') || document.querySelector('textarea[name="message"]');
+    const previewContainer = document.getElementById('cpreview-container');
+
+    if (previewContainer) {
+        previewContainer.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.querySelectorAll('.btn-quote').forEach(button => {
+        button.addEventListener('click', (e) => {
+            const commentEl = e.target.closest('article.comments');
+            const authorEl = commentEl.querySelector('.comment-author');
+            const author = authorEl ? authorEl.innerText.trim() : 'Commenter';
+            const commentId = e.target.dataset.commentId;
+            const messageEl = commentEl.querySelector('.comment-message');
+
+            const selection = window.getSelection().toString().trim();
+            const textToQuote = (selection.length > 0) ? selection : (messageEl ? messageEl.innerText.trim() : '');
+
+            const textileQuote = `bq. "${author}":#c${commentId} wrote:\n` + 
+                                 textToQuote.split('\n').map(line => `> ${line}`).join('\n') + 
+                                 `\n\n`;
+
+            if (textarea) {
+                textarea.value += textileQuote;
+                textarea.focus();
+                textarea.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+});
+</script>

@@ -1,0 +1,10 @@
+<article class="comments" id="c<txp:comment_id />">
+    <header>
+        <span class="comment-author"><txp:comment_name /></span>
+        <txp:if_author><span class="is-author">Author</span></txp:if_author>
+        <time class="comment-time"><txp:comment_time /></time>
+    </header>
+    <div class="comment-message">
+        <txp:comment_message />
+    </div>
+</article>

@@ -1,0 +1,174 @@
+.section-now #main,
+.section-about #main {
+    font-family: Palatino, Georgia, 'Times New Roman', serif;
+    color: #2a2a2a;
+}
+
+.section-now article,
+.section-about article {
+    margin-bottom: 3rem;
+}
+
+.section-now h1[itemprop="headline"],
+.section-about h1[itemprop="headline"] {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    margin: 0 0 0.5rem 0;
+    color: #111;
+}
+
+.section-now [itemprop="articleBody"],
+.section-about [itemprop="articleBody"] {
+    font-size: 1.125rem;
+    line-height: 1.7;
+}
+
+.section-now [itemprop="articleBody"] p,
+.section-about [itemprop="articleBody"] p {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.section-now [itemprop="articleBody"] h2,
+.section-about [itemprop="articleBody"] h2 {
+    font-weight: normal;
+    font-style: italic;
+    font-size: 1.75rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    color: #111;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 0.5rem;
+}
+
+.section-now [itemprop="articleBody"] h3,
+.section-about [itemprop="articleBody"] h3 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #555;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.section-now [itemprop="articleBody"] ul,
+.section-about [itemprop="articleBody"] ul {
+    list-style-type: square;
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.section-now [itemprop="articleBody"] li,
+.section-about [itemprop="articleBody"] li {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
+
+.section-now [itemprop="articleBody"] details,
+.section-about [itemprop="articleBody"] details {
+    margin-bottom: 1.5rem;
+}
+
+.section-now [itemprop="articleBody"] details[open],
+.section-about [itemprop="articleBody"] details[open] {
+    margin-bottom: 2rem;
+}
+
+.section-now [itemprop="articleBody"] summary,
+.section-about [itemprop="articleBody"] summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #111;
+    transition: color 0.2s ease;
+}
+
+.section-now [itemprop="articleBody"] summary:hover,
+.section-about [itemprop="articleBody"] summary:hover {
+    color: #555;
+}
+
+.section-now [itemprop="articleBody"] summary:focus,
+.section-about [itemprop="articleBody"] summary:focus {
+    outline: none;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #ccc;
+}
+
+.section-now [itemprop="articleBody"] details > *:not(summary),
+.section-about [itemprop="articleBody"] details > *:not(summary) {
+    margin-top: 0.75rem;
+    padding-left: 1.25rem;
+    border-left: 2px solid #eaeaea;
+    color: #444;
+    font-size: 1.05rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    body.section-now,
+    body.section-about {
+        background-color: #272421;
+    }
+
+    .section-now #main,
+    .section-about #main {
+        color: #d1c5b4;
+    }
+
+    .section-now h1[itemprop="headline"],
+    .section-about h1[itemprop="headline"] {
+        color: #eadecb;
+    }
+
+    .section-now [itemprop="articleBody"] h2,
+    .section-about [itemprop="articleBody"] h2 {
+        color: #eadecb;
+        border-bottom-color: #423d38;
+    }
+
+    .section-now [itemprop="articleBody"] h3,
+    .section-about [itemprop="articleBody"] h3 {
+        color: #a89f91;
+    }
+
+    .section-now [itemprop="articleBody"] a,
+    .section-about [itemprop="articleBody"] a {
+        color: #5fb3b3;
+    }
+
+    .section-now [itemprop="articleBody"] a:hover,
+    .section-about [itemprop="articleBody"] a:hover {
+        color: #8ce0e0;
+    }
+
+    .section-now [itemprop="articleBody"] summary,
+    .section-about [itemprop="articleBody"] summary {
+        color: #eadecb;
+    }
+
+    .section-now [itemprop="articleBody"] summary:hover,
+    .section-about [itemprop="articleBody"] summary:hover {
+        color: #a89f91;
+    }
+
+    .section-now [itemprop="articleBody"] details > *:not(summary),
+    .section-about [itemprop="articleBody"] details > *:not(summary) {
+        border-left-color: #524d46;
+        color: #b8ac9a;
+    }
+
+    .section-now [itemprop="articleBody"] summary:focus,
+    .section-about [itemprop="articleBody"] summary:focus {
+        text-decoration-color: #5fb3b3;
+    }
+
+    .page-now .entry-content details > *:not(summary),
+    .page-about .entry-content details > *:not(summary) {
+        border-left-color: var(--color-border);
+    }
+}

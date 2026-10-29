@@ -1,0 +1,1518 @@
+/* =============================================================
+   adamishere.org — starter stylesheet
+   Organized to match the Textpattern forms/pages already built.
+   Everything hangs off the custom properties below — change those
+   first, then dig into a section only if you want something the
+   variables can't reach.
+   ============================================================= */
+
+:root {
+    /* --- Color --- */
+    --color-bg: #fdfdfb;
+    --color-bg-alt: #f4f3ef;
+    --color-text: #222222;
+    --color-text-muted: #6b6b6b;
+    --color-border: #e2e0d9;
+    --color-accent: #a8511f;
+    --color-accent-hover: #7e3c15;
+    --color-link: #2b5f8a;
+    --color-link-hover: #1c405e;
+
+    /* --- Type --- */
+    --font-body: Geneva, -apple-system-ui-serif, ui-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: ui-serif, Georgia, "Times New Roman", serif;
+    --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --font-size-base: 1.0625rem;
+    --line-height-base: 1.65;
+
+    /* --- Spacing / layout --- */
+    --space-xs: 0.4rem;
+    --space-sm: 0.8rem;
+    --space-md: 1.6rem;
+    --space-lg: 2.8rem;
+    --space-xl: 4.5rem;
+    --max-width: 60rem;
+    --radius: 4px;
+}
+
+/* =============================================================
+   Reset & base
+   ============================================================= */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a {
+    color: var(--color-link);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.15em;
+}
+
+a:hover { color: var(--color-link-hover); }
+
+h1, h2, h3, h4, h5 {
+    font-family: var(--font-heading);
+    line-height: 1.25;
+    font-weight: 600;
+    margin: 0 0 var(--space-sm);
+}
+
+h2 { font-size: 1.6rem; margin-top: var(--space-lg); }
+h3 { font-size: 1.15rem; }
+h4 { font-size: 1rem; }
+
+p { margin: 0 0 var(--space-md); }
+
+ul, ol { padding-left: 1.2em; }
+
+time { color: var(--color-text-muted); }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 var(--space-md);
+    font-size: 0.95rem;
+}
+
+th, td {
+    padding: var(--space-xs) var(--space-sm);
+    border: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background: var(--color-bg-alt);
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+/* =============================================================
+   Layout shell — .wrapper > .container > #main
+   ============================================================= */
+
+.wrapper {
+    padding: 0 var(--space-md);
+    width: 100%;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+#main {
+    padding: var(--space-lg) 0 var(--space-xl);
+}
+
+/* =============================================================
+   Site header — site_header.txp
+   Consolidated from two overlapping rule sets that were fighting
+   over .header-container/nav specificity; this is the effective
+   result both used to produce, in one place.
+   ============================================================= */
+
+header[itemtype$="WPHeader"] {
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+header[itemtype$="WPHeader"] .header-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* left-aligned by default on mobile */
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+
+header[itemtype$="WPHeader"] h1 {
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+header[itemtype$="WPHeader"] h1 a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.logo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6em;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.logo.main-logo {
+    width: 45px;
+    height: auto;
+    display: block;
+}
+
+.main-logo {
+    height: 1.8em;
+    width: auto;
+    display: block;
+}
+
+header[itemtype$="WPHeader"] nav {
+    width: 100%;
+    overflow-x: auto; /* horizontal finger-swipe scrolling on mobile */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+header[itemtype$="WPHeader"] nav::-webkit-scrollbar {
+    display: none;
+}
+
+header[itemtype$="WPHeader"] nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap; /* forces links onto one line on mobile */
+    gap: var(--space-md);
+}
+
+header[itemtype$="WPHeader"] nav li {
+    flex: 0 0 auto;
+}
+
+header[itemtype$="WPHeader"] nav a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    display: block;
+    white-space: nowrap;
+}
+
+header[itemtype$="WPHeader"] nav a:hover {
+    border-bottom-color: var(--color-border);
+}
+
+header[itemtype$="WPHeader"] nav li.active a {
+    border-bottom-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+@media (min-width: 48rem) {
+    header[itemtype$="WPHeader"] .header-container {
+        flex-direction: row;
+        align-items: baseline;
+    }
+
+    header[itemtype$="WPHeader"] nav {
+        width: auto;
+        overflow-x: visible;
+    }
+
+    header[itemtype$="WPHeader"] nav ul {
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 600px) {
+    .logo-link {
+        left: 0;
+        top: 0;
+    }
+}
+
+/* =============================================================
+   Mini header — shared by single-entry templates (Daily, White
+   Papers, and any other page that includes the mini-header form)
+   ============================================================= */
+
+body.permalink-page.section-articles {
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.6;
+}
+
+.header-mini {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+    margin: 0 auto 2.5rem;
+    width: 100%;
+    max-width: 800px;
+}
+
+.logo.small-logo {
+    width: 35px;
+    height: auto;
+    display: block;
+}
+
+.mini-nav-links {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.mini-link {
+    text-decoration: none;
+    color: #657786;
+    transition: color 0.2s ease;
+}
+
+.mini-link:hover {
+    color: #4c9a9e;
+}
+
+.mini-separator {
+    margin: 0 8px;
+    color: #ccc;
+}
+
+article.single-article {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+@media (prefers-color-scheme: dark) {
+    .header-mini { border-bottom-color: #444; }
+    .mini-link { color: #aaa; }
+    .mini-link:hover { color: #66b3ff; }
+    .mini-separator { color: #555; }
+}
+
+/* =============================================================
+   Site footer (Restored Centered & Pill Badges)
+   ============================================================= */
+
+footer[role="contentinfo"] {
+    margin-top: 4rem;
+    padding: 2.5rem var(--space-md) 2rem;
+    background: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    
+    /* Restored single-column centered layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+}
+
+/* Clear sub-div structural borders/padding from starter stylesheet */
+footer[role="contentinfo"] > div {
+    max-width: var(--max-width);
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    border-bottom: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* License Badge */
+.footer-license {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-license img {
+    width: 88px;
+    height: 31px;
+    display: block;
+    margin: 0 auto;
+}
+
+@media (prefers-color-scheme: dark) {
+    .footer-license img {
+        filter: brightness(0.8) contrast(1.2);
+    }
+}
+
+/* RSS Links */
+.footer-rss p {
+    margin: 0;
+}
+
+.footer-rss a {
+    font-weight: bold;
+    color: var(--color-link);
+    white-space: nowrap;
+}
+
+/* Webrings - Restored Pill Outlines & Sizing */
+.footer-webrings {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.footer-webrings p {
+    margin: 0 auto;
+    padding: 4px 12px;
+    border: 1px solid var(--color-accent);
+    background: var(--color-bg);
+    border-radius: 20px;
+    width: fit-content;
+    font-size: 0.8rem;
+}
+
+.footer-webrings a {
+    padding: 0 8px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--color-link);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.8rem 1.2rem;
+}
+
+@media (max-width: 600px) {
+    footer[role="contentinfo"] {
+        padding: 2rem 1rem;
+    }
+}
+
+/* =============================================================
+   Home page — home_layout.txp
+   ============================================================= */
+
+section.welcome {
+    margin-bottom: var(--space-lg);
+}
+
+section.recent-links,
+section.recent-writing,
+section.recent-notes {
+    margin-bottom: var(--space-lg);
+}
+
+.recent-notes {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.recent-notes article.note {
+    margin: 0;
+}
+
+.entry-date-small {
+    font-size: 0.9em;
+}
+
+/* =============================================================
+   Article & content listings — writing_list_item.txp /
+   recent_writing_item.txp / reading_list.txp
+   ============================================================= */
+
+ul.writing-list,
+ul.category-list,
+ul.reading-list {
+    list-style: none;
+    padding: 0;
+}
+
+.article-entry {
+    margin-bottom: 1em;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    break-inside: avoid; /* prevents awkward wrapping in the grid below */
+}
+
+.article-entry .meta-divider,
+.article-entry time {
+    color: #777; /* soften the dates so titles stand out */
+}
+
+li.article-entry:last-child {
+    border-bottom: none;
+}
+
+.meta-divider {
+    color: var(--color-text-muted);
+    margin: 0 0.5em;
+}
+
+.inline-category {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-left: 0.5em;
+}
+
+p.meta {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-xs);
+}
+
+/* --- Accordion directory --- */
+.category-accordion {
+    margin-bottom: 1.25em;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 0.5em;
+}
+
+.category-heading {
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.05em;
+    padding: 0.5em 0;
+    transition: color 0.2s ease;
+}
+
+.category-heading:hover {
+    color: #555;
+}
+
+/* --- Grid layout: auto-fills as many 300px columns as fit --- */
+.category-list {
+    margin-top: 1em;
+    padding-left: 0;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1em 2em;
+}
+
+/* =============================================================
+   Paginator — used across section_layout.txp
+   ============================================================= */
+
+nav.paginator {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9rem;
+}
+
+/* =============================================================
+   Individual article / blog post view —
+   section_layout.txp permalink branch
+   ============================================================= */
+
+article[itemtype$="BlogPosting"] h2 {
+    margin-top: 0;
+}
+
+article[itemtype$="BlogPosting"] > .meta {
+    margin-bottom: var(--space-lg);
+}
+
+/* =============================================================
+   Comments — comments_display.txp / comment_form.txp
+   ============================================================= */
+
+#comments-head,
+#comments-form {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+}
+
+ol.comments-list {
+    list-style: none;
+    padding: 0;
+}
+
+article.comments {
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+article.comments-author {
+    background: var(--color-bg-alt);
+    padding: var(--space-md);
+    border-radius: var(--radius);
+    border-bottom: none;
+}
+
+.comment-author {
+    font-weight: 600;
+}
+
+.is-author {
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    font-weight: normal;
+    margin-left: 0.4em;
+}
+
+.comment-anchor {
+    margin-left: 0.6em;
+    font-size: 0.85rem;
+}
+
+.footnote {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin: var(--space-xs) 0 var(--space-sm);
+}
+
+#cpreview {
+    font-style: italic;
+    color: var(--color-text-muted);
+}
+
+/* =============================================================
+   Responsive base
+   ============================================================= */
+
+@media (max-width: 30rem) {
+    :root {
+        --font-size-base: 1rem;
+    }
+
+    nav.paginator {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .section-notes article.note,
+    article.single-entry.type-notes {
+        box-shadow: none;
+    }
+
+    .section-reading .entry-content h2 {
+        border-bottom-color: var(--color-text);
+    }
+
+    .page-now .entry-content details > *:not(summary),
+    .page-about .entry-content details > *:not(summary) {
+        border-left-color: var(--color-border);
+    }
+}
+
+/* ==========================================================================
+   SECTION: NOTES & MICROTHOUGHTS (Twitter-esque stream)
+   Scope: article.note / .section-notes / article.single-entry.type-notes
+   ========================================================================== */
+
+article.note {
+    padding: var(--space-md);
+    margin-bottom: var(--space-md) !important; /* overrides inline style in the form */
+    background: var(--color-bg-alt);
+    border-radius: var(--radius);
+}
+
+article.note p.meta {
+    margin-bottom: var(--space-sm);
+}
+
+article.note :last-child {
+    margin-bottom: 0;
+}
+
+/* The note entry card */
+.section-notes article.note {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-accent);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    width: 100%;
+    padding: var(--space-md);
+    box-sizing: border-box;
+    margin-bottom: var(--space-md) !important;
+}
+
+.section-notes article.note .entry-header,
+article.single-entry.type-notes .entry-header {
+    margin-bottom: var(--space-xs);
+    border-bottom: 1px dashed var(--color-border);
+    padding-bottom: var(--space-xs);
+}
+
+.section-notes article.note .entry-title,
+article.single-entry.type-notes .entry-title {
+    font-size: 1rem;
+    font-weight: 800;
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--color-accent);
+}
+
+.section-notes article.note .entry-date,
+article.single-entry.type-notes .entry-date {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    display: block;
+    margin-top: 2px;
+}
+
+.section-notes .note-content,
+article.single-entry.type-notes .note-content {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    line-height: var(--line-height-base);
+}
+
+.section-notes .note-content a,
+article.single-entry.type-notes .note-content a {
+    color: var(--color-link);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.section-notes .note-content a:hover,
+article.single-entry.type-notes .note-content a:hover {
+    color: var(--color-link-hover);
+}
+
+/* --- Archive navigation --- */
+.archive-nav {
+    margin-bottom: var(--space-lg);
+    padding: var(--space-md);
+    background: var(--color-bg-alt);
+    border-radius: var(--radius);
+}
+
+.archive-nav h3 {
+    margin-bottom: var(--space-sm);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+}
+
+ul.archive-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-sm);
+    align-items: baseline;
+}
+
+ul.archive-list li.archive-year {
+    flex-basis: 100%;
+    margin-top: var(--space-sm);
+    font-weight: 600;
+}
+
+ul.archive-list li.archive-year:first-child {
+    margin-top: 0;
+}
+
+ul.archive-list li.archive-year a {
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+ul.archive-list li.archive-month {
+    font-size: 0.9rem;
+}
+
+ul.archive-list li.archive-month a {
+    text-decoration: none;
+    color: var(--color-link);
+}
+
+ul.archive-list li.archive-month::after {
+    content: "";
+}
+
+/* --- Sidebar layout for the notes index --- */
+.container.has-sidebar {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 3rem;
+    align-items: start; /* required for sticky positioning to calculate correctly */
+}
+
+.container.has-sidebar .sidebar {
+    position: sticky;
+    top: 2rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .container.has-sidebar {
+        display: block;
+    }
+    .container.has-sidebar .sidebar {
+        position: static;
+        max-height: none;
+        margin-bottom: 2rem;
+    }
+}
+
+/* ==========================================================================
+   SECTION: LINKS (individual permalink view)
+   Scope: body.permalink-page.section-links
+   ========================================================================== */
+
+.permalink-page.section-links {
+    --meh-default-accent: #4c9a9e;
+    --meh-default-background: transparent;
+    --meh-default-foreground: #4a4a4a;
+    --meh-default-spacing: 1.2rem;
+    --meh-default-border-radius: 4px;
+    --meh-default-border-color: #eee;
+    --meh-default-success: #3a7271;
+    --meh-default-error: #b34a4a;
+}
+
+body.permalink-page.section-links {
+    font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+    background-color: #f7f7f3;
+    color: #4a4a4a;
+    line-height: 1.8;
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+article.link-entry {
+    margin-bottom: var(--space-lg) !important; /* overrides inline style in the forms */
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+}
+
+article.link-entry:last-child {
+    border-bottom: none;
+}
+
+article.link-entry h3 {
+    margin-bottom: var(--space-xs);
+}
+
+.link-context {
+    color: var(--color-text-muted);
+}
+
+.permalink-page.section-links article.single-link {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.permalink-page.section-links article.single-link h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0 0 1.5rem 0;
+    color: #2e3a47;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+}
+
+.permalink-page.section-links article.single-link h2 a {
+    color: #2e3a47;
+    text-decoration: none;
+}
+
+.permalink-page.section-links article.single-link .meta {
+    font-size: 0.9rem;
+    color: #777;
+    display: block;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.permalink-page.section-links article.single-link div[itemprop="articleBody"] {
+    font-size: 1.2rem;
+    color: #4a4a4a;
+    margin-top: 1.5rem;
+    line-height: 1.8;
+}
+
+.permalink-page.section-links article.single-link div[itemprop="articleBody"] a {
+    color: #4c9a9e;
+    text-decoration: underline;
+}
+
+.permalink-page.section-links article.single-link div[itemprop="articleBody"] a:hover {
+    text-decoration: none;
+    color: #3a7271;
+}
+
+.permalink-page.section-links article.single-link .permalink-meta {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    font-size: 1rem;
+    color: #7a7a7a;
+}
+
+.permalink-page.section-links article.single-link .permalink-meta a {
+    color: #4c9a9e;
+    font-weight: bold;
+    word-break: break-all;
+}
+
+.permalink-page.section-links .comments-area {
+    width: 100%;
+    max-width: 800px;
+    margin: 5rem auto 2rem auto;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.permalink-page.section-links .comments-invite {
+    font-size: 1rem;
+    color: #7a7a7a;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
+    border-left: 3px solid #4c9a9e;
+    font-style: italic;
+}
+
+@media (prefers-color-scheme: dark) {
+    .permalink-page.section-links {
+        --meh-default-accent: #66b3ff;
+        --meh-default-foreground: #d0d0d0;
+        --meh-default-border-color: #444;
+    }
+
+    body.permalink-page.section-links {
+        background-color: #222;
+        color: #e0e0e0;
+    }
+
+    .permalink-page.section-links article.single-link {
+        background-color: #2d3741;
+        border: none;
+    }
+
+    .permalink-page.section-links article.single-link h2,
+    .permalink-page.section-links article.single-link h2 a {
+        color: #ffffff;
+    }
+
+    .permalink-page.section-links article.single-link .meta {
+        color: #aaa;
+    }
+
+    .permalink-page.section-links article.single-link div[itemprop="articleBody"] {
+        color: #d0d0d0;
+    }
+
+    .permalink-page.section-links article.single-link div[itemprop="articleBody"] a,
+    .permalink-page.section-links article.single-link .permalink-meta a {
+        color: #66b3ff;
+    }
+
+    .permalink-page.section-links .comments-area {
+        background-color: #2d3741;
+        border: none;
+    }
+
+    .permalink-page.section-links .comments-invite {
+        color: #aaa;
+        border-left-color: #66b3ff;
+    }
+}
+
+/* ==========================================================================
+   SECTION: NOW & ABOUT PAGES (stark minimalist status board)
+   Scope: .section-now, .section-about
+   ========================================================================== */
+
+.section-now #main,
+.section-about #main {
+    font-family: Palatino, Georgia, 'Times New Roman', serif;
+    color: #2a2a2a;
+}
+
+.section-now article,
+.section-about article {
+    margin-bottom: 3rem;
+}
+
+.section-now h1[itemprop="headline"],
+.section-about h1[itemprop="headline"] {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    margin: 0 0 0.5rem 0;
+    color: #111;
+}
+
+.section-now [itemprop="articleBody"],
+.section-about [itemprop="articleBody"] {
+    font-size: 1.125rem;
+    line-height: 1.7;
+}
+
+.section-now [itemprop="articleBody"] p,
+.section-about [itemprop="articleBody"] p {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.section-now [itemprop="articleBody"] h2,
+.section-about [itemprop="articleBody"] h2 {
+    font-weight: normal;
+    font-style: italic;
+    font-size: 1.75rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    color: #111;
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 0.5rem;
+}
+
+.section-now [itemprop="articleBody"] h3,
+.section-about [itemprop="articleBody"] h3 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #555;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.section-now [itemprop="articleBody"] ul,
+.section-about [itemprop="articleBody"] ul {
+    list-style-type: square;
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.section-now [itemprop="articleBody"] li,
+.section-about [itemprop="articleBody"] li {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
+
+.section-now [itemprop="articleBody"] details,
+.section-about [itemprop="articleBody"] details {
+    margin-bottom: 1.5rem;
+}
+
+.section-now [itemprop="articleBody"] details[open],
+.section-about [itemprop="articleBody"] details[open] {
+    margin-bottom: 2rem;
+}
+
+.section-now [itemprop="articleBody"] summary,
+.section-about [itemprop="articleBody"] summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #111;
+    transition: color 0.2s ease;
+}
+
+.section-now [itemprop="articleBody"] summary:hover,
+.section-about [itemprop="articleBody"] summary:hover {
+    color: #555;
+}
+
+.section-now [itemprop="articleBody"] summary:focus,
+.section-about [itemprop="articleBody"] summary:focus {
+    outline: none;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #ccc;
+}
+
+.section-now [itemprop="articleBody"] details > *:not(summary),
+.section-about [itemprop="articleBody"] details > *:not(summary) {
+    margin-top: 0.75rem;
+    padding-left: 1.25rem;
+    border-left: 2px solid #eaeaea;
+    color: #444;
+    font-size: 1.05rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    body.section-now,
+    body.section-about {
+        background-color: #272421;
+    }
+
+    .section-now #main,
+    .section-about #main {
+        color: #d1c5b4;
+    }
+
+    .section-now h1[itemprop="headline"],
+    .section-about h1[itemprop="headline"] {
+        color: #eadecb;
+    }
+
+    .section-now [itemprop="articleBody"] h2,
+    .section-about [itemprop="articleBody"] h2 {
+        color: #eadecb;
+        border-bottom-color: #423d38;
+    }
+
+    .section-now [itemprop="articleBody"] h3,
+    .section-about [itemprop="articleBody"] h3 {
+        color: #a89f91;
+    }
+
+    .section-now [itemprop="articleBody"] a,
+    .section-about [itemprop="articleBody"] a {
+        color: #5fb3b3;
+    }
+
+    .section-now [itemprop="articleBody"] a:hover,
+    .section-about [itemprop="articleBody"] a:hover {
+        color: #8ce0e0;
+    }
+
+    .section-now [itemprop="articleBody"] summary,
+    .section-about [itemprop="articleBody"] summary {
+        color: #eadecb;
+    }
+
+    .section-now [itemprop="articleBody"] summary:hover,
+    .section-about [itemprop="articleBody"] summary:hover {
+        color: #a89f91;
+    }
+
+    .section-now [itemprop="articleBody"] details > *:not(summary),
+    .section-about [itemprop="articleBody"] details > *:not(summary) {
+        border-left-color: #524d46;
+        color: #b8ac9a;
+    }
+
+    .section-now [itemprop="articleBody"] summary:focus,
+    .section-about [itemprop="articleBody"] summary:focus {
+        text-decoration-color: #5fb3b3;
+    }
+}
+
+/* ==========================================================================
+   SECTION: READING LOG (single view — scholarly hardback treatment)
+   Scope: body.permalink-page.section-reading
+   NOTE: the base rule below was `body..permalink-page.section-reading`
+   (double dot) in the original file, and its dark-mode counterpart was
+   `body.permalink-section.section-reading` — both typos meant these two
+   rules never matched anything and this whole section rendered unstyled.
+   Corrected to match the `body.permalink-page.section-X` pattern used
+   by every other single-view template (see Links/Daily/White Papers).
+   ========================================================================== */
+
+body.permalink-page.section-reading {
+    font-family: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+    background-color: #f8f5f0;
+    color: #2c2c2c;
+    line-height: 1.75;
+}
+
+article.single-book {
+    width: 100%;
+    max-width: 750px;
+    background-color: transparent;
+}
+
+article.single-book h2[itemprop="itemReviewed"] {
+    margin: 0;
+    text-align: left;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #111;
+    line-height: 1.2;
+}
+
+article.single-book .entry-date {
+    display: block;
+    margin-top: 0.5rem;
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
+    color: #666;
+    font-style: italic;
+}
+
+[itemprop="reviewBody"] h2 {
+    font-size: 1.8rem;
+    border-bottom: 2px solid #444;
+    font-variant: small-caps;
+    margin-top: 2rem;
+    padding-bottom: 0.2rem;
+}
+
+[itemprop="reviewBody"] p {
+    text-indent: 1.5rem;
+    margin-bottom: 1.2rem;
+    text-align: justify;
+}
+
+[itemprop="reviewBody"] p:first-of-type,
+[itemprop="reviewBody"] h2 + p,
+[itemprop="reviewBody"] h3 + p {
+    text-indent: 0;
+}
+
+article.single-book blockquote {
+    margin: 2rem 0;
+    padding: 1rem 2rem;
+    border-left: 4px solid #444;
+    background-color: #efede8;
+    font-style: italic;
+    color: #444;
+}
+
+article.single-book blockquote + cite,
+article.single-book blockquote + p cite,
+article.single-book figure cite {
+    display: block;
+    font-size: 0.9em;
+    text-align: right;
+    margin-top: 0.5rem;
+    color: #555;
+}
+
+article.single-book blockquote + cite::before,
+article.single-book blockquote + p cite::before {
+    content: "— ";
+}
+
+@media (prefers-color-scheme: dark) {
+    body.permalink-page.section-reading {
+        background-color: #1a1a1a;
+        color: #d1d1d1;
+    }
+    article.single-book h2[itemprop="itemReviewed"] {
+        color: #eee;
+    }
+
+    [itemprop="reviewBody"] h2 {
+        border-bottom-color: #888;
+        color: #fff;
+    }
+
+    article.single-book blockquote {
+        background-color: #252525;
+        border-left-color: #888;
+        color: #bbb;
+    }
+
+    article.single-book blockquote + cite,
+    article.single-book blockquote + p cite,
+    article.single-book figure cite {
+        color: #cccccc;
+    }
+}
+
+/* ==========================================================================
+   SECTION: DAILY ENTRIES (single view)
+   Scope: body.category-daily
+   ========================================================================== */
+
+body.category-daily {
+    background-color: #f5f2e9;
+    color: #3a2e2a;
+}
+
+body.category-daily .header-mini {
+    border-bottom: 1px dashed #8b7765;
+    max-width: 700px; /* aligns header with the narrower paper container */
+}
+
+body.category-daily .mini-link {
+    color: #8b7765;
+}
+
+body.category-daily footer[role="contentinfo"],
+body.category-white-papers footer[role="contentinfo"] {
+    margin-top: 40px;
+    padding-top: 20px;
+    font-size: 14px;
+    color: #777;
+    text-align: center;
+    width: 100%;
+}
+
+body.category-daily footer[role="contentinfo"] {
+    border-top: 1px dashed #8b7765;
+}
+
+/* The paper container */
+body.category-daily article.single-article {
+    max-width: 700px;
+    background-color: #fffaf0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    font-family: 'Century Schoolbook', 'Courier New', Courier, monospace;
+}
+
+body.category-daily h1[itemprop="headline"] {
+    font-family: 'Century Schoolbook', 'Courier New', Courier, monospace;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px dashed #8b7765;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    color: #3a2e2a;
+}
+
+body.category-daily .meta {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+body.category-daily [itemprop="articleBody"] p {
+    text-indent: 30px;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+body.category-daily [itemprop="articleBody"] p:first-of-type {
+    text-indent: 0;
+}
+
+body.category-daily [itemprop="articleBody"] p.three::first-letter {
+    font-size: 3.5rem;
+    font-weight: bold;
+    float: left;
+    line-height: 1;
+    margin-right: 8px;
+    margin-top: 4px;
+    color: #8b7765;
+    font-family: 'Georgia', serif;
+}
+
+body.category-daily [itemprop="articleBody"] p + p {
+    text-indent: 30px;
+    margin-top: 0;
+}
+
+body.category-daily #comments-head {
+    max-width: 700px; /* match the paper width */
+    margin: 3rem auto;
+    background-color: #fffaf0;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+body.category-daily #comments-form .comments-wrapper > p:first-of-type {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    color: #8b7765;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed #8b7765;
+    font-style: italic;
+}
+
+@media (prefers-color-scheme: dark) {
+    body.category-daily {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+
+    body.category-daily .header-mini { border-bottom-color: #444; }
+    body.category-daily .mini-link { color: #a68d7c; }
+    body.category-daily footer[role="contentinfo"] { border-top-color: #a68d7c; color: #aaa; }
+
+    body.category-daily article.single-article {
+        background-color: #2c2c2c;
+        border: 1px solid #444;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+    body.category-daily h1[itemprop="headline"] {
+        border-bottom: 2px dashed #a68d7c;
+        color: #f5f2e9;
+    }
+    body.category-daily .meta { color: #bbb; }
+    body.category-daily [itemprop="articleBody"] p.three::first-letter { color: #a68d7c; }
+
+    body.category-daily #comments-head {
+        background-color: #2c2c2c;
+        border: 1px solid #444;
+    }
+    body.category-daily #comments-form .comments-wrapper > p:first-of-type {
+        color: #a68d7c;
+        border-bottom-color: #a68d7c;
+    }
+}
+
+/* ==========================================================================
+   SECTION: WHITE PAPERS (single view)
+   Scope: body.category-white-papers
+   ========================================================================== */
+
+body.category-white-papers {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+body.category-white-papers .header-mini {
+    border-bottom: 1px solid #eee;
+}
+
+body.category-white-papers .mini-link {
+    color: #657786;
+}
+
+body.category-white-papers footer[role="contentinfo"] {
+    border-top: none; /* white papers didn't have a dashed footer border */
+}
+
+/* The rigid container */
+body.category-white-papers article.single-article {
+    max-width: 800px;
+    padding: 60px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    font-family: 'Gill Sans', 'Helvetica Neue', sans-serif;
+}
+
+body.category-white-papers article.single-article::before {
+    content: "For immediate release: OFFICIAL WHITE PAPER";
+    display: block;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #555;
+    margin-bottom: 20px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+body.category-white-papers h1[itemprop="headline"] {
+    font-family: 'Gill Sans', 'Helvetica Neue', sans-serif;
+    font-size: 2.5rem;
+    color: #111;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+    text-align: center;
+}
+
+body.category-white-papers .meta {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #666;
+    font-weight: 700;
+    border-bottom: 2px solid #333;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    display: block;
+    text-align: center;
+}
+
+body.category-white-papers [itemprop="articleBody"] p {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 1.125rem;
+    margin-bottom: 25px;
+    text-align: justify;
+    color: #444;
+}
+
+body.category-white-papers #comments-head {
+    max-width: 800px; /* match the paper width */
+    margin: 5rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px dashed #ccc;
+}
+
+body.category-white-papers #comments-form .comments-wrapper > p:first-of-type {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 2rem;
+    padding: 1rem 1.25rem;
+    border-left: 3px solid #333;
+    background-color: #f0f0f0;
+}
+
+@media (prefers-color-scheme: dark) {
+    body.category-white-papers {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+
+    body.category-white-papers .header-mini { border-bottom-color: #38444d; }
+    body.category-white-papers .mini-link { color: #8899a6; }
+
+    body.category-white-papers article.single-article {
+        background-color: #1e1e1e;
+        border-color: #333;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+    body.category-white-papers h1[itemprop="headline"] { color: #ffffff; }
+    body.category-white-papers .meta { border-bottom-color: #e0e0e0; }
+    body.category-white-papers [itemprop="articleBody"] p { color: #cccccc; }
+
+    body.category-white-papers #comments-head { border-top-color: #444; }
+    body.category-white-papers #comments-form .comments-wrapper > p:first-of-type {
+        color: #aaa;
+        border-left-color: #e0e0e0;
+        background-color: #1a1a1a;
+    }
+}

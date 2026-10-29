@@ -1,0 +1,58 @@
+<footer role="contentinfo">
+
+    <div class="footer-license">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">
+            <txp:image id="1" />
+        </a>
+        <div class="license-text">
+            <p>This work is licensed under a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+    
+            <p>
+                &copy;
+                <script>document.write(new Date().getFullYear());</script>
+                <noscript>
+                    <txp:article_custom limit="1"><txp:posted format="%Y" /></txp:article_custom>
+                </noscript>
+                <txp:site_name /> — Proudly boring and permanent.
+            </p>
+            <p class="last-signal">
+                <small>
+                    Last signal sent:
+                    <txp:article_custom limit="1" sort="posted desc">
+                        <time datetime="<txp:posted format="iso8601" />">
+                            <txp:posted format="%B %d, %Y — %I:%M %p" />
+                        </time>
+                    </txp:article_custom>
+                </small>
+            </p>
+        </div>
+    </div>
+
+    <div class="footer-rss">
+        <p>
+            Subscribe: 
+            <txp:feed_link flavor="rss" section="" format="a" label="RSS (Everything)" /> | 
+            <txp:feed_link flavor="rss" section="notes" format="a" label="RSS (Notes Only)" /> | 
+            <txp:feed_link flavor="rss" section="links" format="a" label="RSS (Links Only)" />
+        </p>
+    </div>
+
+    <div class="footer-webrings">
+        <p>
+            <a href="https://xn--sr8hvo.ws/%E2%8F%B1%E2%8F%B3%F0%9F%98%87/previous" rel="nofollow">←</a>
+            An IndieWeb Webring 🕸💍
+            <a href="https://xn--sr8hvo.ws/%E2%8F%B1%E2%8F%B3%F0%9F%98%87/next" rel="nofollow">→</a>
+        </p>
+
+        <p>
+            <a href="https://hotlinewebring.club/wolfsweat/previous" rel="nofollow">←</a>
+            Hotline Webring Member
+            <a href="https://hotlinewebring.club/wolfsweat/next" rel="nofollow">→</a>
+        </p>
+    </div>
+
+    <txp:linklist category="footer" wraptag="div" class="footer-links">
+        <a href="<txp:link_url />"><txp:link_name /></a>
+    </txp:linklist>
+
+</footer>

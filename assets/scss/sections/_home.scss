@@ -1,0 +1,317 @@
+/* ==========================================================================
+   Homepage Sections & Layout Components
+   ========================================================================== */
+
+/* 1. Base Section Wrapper Spacing */
+section.welcome,
+section.recent-links,
+section.recent-writing,
+section.recent-notes {
+    margin-bottom: var(--space-lg);
+}
+
+/* 2. Welcome / Intro Section */
+section.welcome {
+    p {
+        font-size: 1.05rem;
+        line-height: 1.5;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+/* 3. Recent Notes (Stream Cards) */
+.recent-notes {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+
+    article.note {
+        margin: 0;
+        
+        .note-content p {
+            margin-bottom: var(--space-xs);
+        }
+    }
+}
+
+/* Note Stream Metadata & Comment Indicator */
+p.meta {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-xs);
+
+    a {
+        color: var(--color-text-muted);
+        text-decoration: none;
+
+        &:hover {
+            color: var(--color-link);
+            text-decoration: underline;
+        }
+    }
+
+    .note-comments-count {
+        margin-left: 0.25em;
+
+        a {
+            color: var(--color-text-muted);
+
+            &:hover {
+                color: var(--color-link-hover);
+            }
+        }
+    }
+}
+
+/* 4. Recent Writing (Articles) & Lists */
+section.recent-writing {
+    h3 {
+        margin-bottom: var(--space-sm);
+    }
+}
+
+ul.writing-list,
+ul.category-list,
+ul.reading-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.article-entry {
+    margin-bottom: 1em;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    break-inside: avoid;
+
+    &:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+    a {
+        font-weight: 600;
+        color: var(--color-text);
+        text-decoration: none;
+
+        &:hover {
+            color: var(--color-link);
+            text-decoration: underline;
+        }
+    }
+
+    .meta-divider,
+    time {
+        color: var(--color-text-muted);
+    }
+
+    .entry-date-small {
+        font-size: 0.9em;
+    }
+
+    .inline-category {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--color-text-muted);
+        margin-left: 0.5em;
+    }
+}
+
+.meta-divider {
+    color: var(--color-text-muted);
+    margin: 0 0.5em;
+}
+
+/* Category Accordion / Grids (if displayed on home or index streams) */
+.category-accordion {
+    margin-bottom: 1.25em;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0.5em;
+}
+
+.category-heading {
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.05em;
+    padding: 0.5em 0;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: var(--color-text-muted);
+    }
+}
+
+.category-list {
+    margin-top: 1em;
+    padding-left: 0;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1em 2em;
+}
+
+/* 5. Curated Shelves (3-Column Grid) */
+.curated-shelves {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 2.5rem 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.shelf-group {
+    h3 {
+        font-size: 1.05rem;
+        margin-bottom: 0.85rem;
+        color: var(--color-text);
+        border-bottom: 2px solid var(--color-bg-alt);
+        padding-bottom: 0.35rem;
+    }
+}
+
+.shelf-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.shelf-item {
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    line-height: 1.35;
+
+    a {
+        font-weight: 600;
+        color: var(--color-text);
+        text-decoration: none;
+
+        &:hover {
+            color: var(--color-link);
+            text-decoration: underline;
+        }
+    }
+}
+
+.shelf-note {
+    display: block;
+    font-size: 0.825rem;
+    color: var(--color-text-muted);
+    margin-top: 0.15rem;
+}
+
+/* 6. Recent Discussion (Homepage Comments Widget) */
+.homepage-recent-comments {
+    margin: var(--space-lg) 0;
+    padding: var(--space-md);
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+
+    h3 {
+        margin-top: 0;
+        margin-bottom: var(--space-sm);
+        font-size: 1.15rem;
+    }
+}
+
+.recent-comments-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.recent-comment-item {
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--color-border);
+
+    &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+}
+
+.recent-comment-author {
+    font-weight: 600;
+
+    a {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.recent-comment-meta {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+
+    a {
+        color: var(--color-text-muted);
+        text-decoration: none;
+        font-style: italic;
+
+        &:hover {
+            color: var(--color-link);
+            text-decoration: underline;
+        }
+    }
+}
+
+.recent-comment-date {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-top: var(--space-xs);
+}
+
+/* 7. Homepage Pagination / Nav */
+.paginator,
+nav.paginator {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9rem;
+
+    a {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--color-text);
+        background-color: var(--color-bg-alt);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        text-decoration: none;
+        transition: all 0.15s ease-in-out;
+
+        &:hover {
+            background-color: var(--color-border);
+            color: var(--color-text);
+        }
+    }
+}
+
+@media (max-width: 30rem) {
+    nav.paginator {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+}

@@ -1,0 +1,271 @@
+/* ==========================================================================
+   LISTENING PAGE SPECIFICS (The Liner Notes)
+   ========================================================================== */
+body.section-listening #main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Page Title */
+body.section-listening article h1[itemprop="headline"] {
+    font-family: "Gill Sans", "Gill Sans MT", -apple-system, sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 3rem 0;
+    color: #111;
+    text-align: center;
+}
+
+/* Intro Paragraph */
+body.section-listening article [itemprop="articleBody"] > p:first-of-type {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 4rem;
+    text-indent: 2rem;
+    text-align: justify;
+}
+
+/* Content Links */
+body.section-listening article [itemprop="articleBody"] a {
+    color: #c02626;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(192, 38, 38, 0.3);
+    transition: all 0.2s ease;
+}
+
+body.section-listening article [itemprop="articleBody"] a:hover {
+    border-bottom-color: #c02626;
+    background-color: rgba(192, 38, 38, 0.05);
+}
+
+/* The Dates (h2) */
+body.section-listening article [itemprop="articleBody"] h2 {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 1.1rem;
+    font-weight: normal;
+    color: #111;
+    margin-top: 3.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #111;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* The Categories (h3) */
+body.section-listening article [itemprop="articleBody"] h3 {
+    font-family: "Gill Sans", "Gill Sans MT", -apple-system, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Lists */
+body.section-listening article [itemprop="articleBody"] ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-bottom: 2rem;
+}
+
+body.section-listening article [itemprop="articleBody"] li {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+body.section-listening article [itemprop="articleBody"] li::before {
+    content: "■";
+    color: #c02626;
+    font-size: 0.6rem;
+    position: absolute;
+    left: 0;
+    top: 0.45rem;
+}
+
+/* Horizontal Rule */
+body.section-listening article [itemprop="articleBody"] hr {
+    border: none;
+    text-align: center;
+    margin: 3rem 0;
+}
+
+body.section-listening article [itemprop="articleBody"] hr::after {
+    content: "⁂";
+    font-size: 1.5rem;
+    color: #999;
+}
+
+/* LINER NOTES (Details & Summary) */
+body.section-listening article [itemprop="articleBody"] details {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+body.section-listening article [itemprop="articleBody"] details[open] {
+    margin-top: 0.75rem;
+    margin-bottom: 1.5rem;
+    background-color: #f4f2eb;
+    padding: 1rem 1.25rem;
+    border-left: 3px solid #c02626;
+    color: #444;
+    font-style: italic;
+    border-radius: 0 4px 4px 0;
+}
+
+body.section-listening article [itemprop="articleBody"] details[open] summary::before {
+    content: "−";
+}
+
+body.section-listening article [itemprop="articleBody"] details[open] > *:not(summary) {
+    margin-top: 1rem;
+}
+
+body.section-listening article [itemprop="articleBody"] summary {
+    list-style: none;
+    cursor: pointer;
+    font-family: "Gill Sans", "Gill Sans MT", -apple-system, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #555;
+    background-color: #f0ede5;
+    padding: 0.35rem 0.8rem;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+body.section-listening article [itemprop="articleBody"] summary::-webkit-details-marker {
+    display: none;
+}
+
+body.section-listening article [itemprop="articleBody"] summary::before {
+    content: "+";
+    font-size: 1.2rem;
+    line-height: 1;
+    color: #c02626;
+    transition: transform 0.2s ease;
+}
+
+body.section-listening article [itemprop="articleBody"] summary:hover {
+    color: #111;
+    background-color: #e8e4d8;
+    border-color: #d1cbb8;
+}
+
+body.section-listening article [itemprop="articleBody"] summary:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(192, 38, 38, 0.3);
+}
+
+/* ==========================================================================
+   DARK MODE - Studio Monitor
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+    body.static-page {
+        background-color: #18181a;
+        color: #e0e0e0;
+    }
+
+    .header-mini {
+        border-bottom-color: #333;
+    }
+
+    .header-mini .mini-link {
+        color: #999;
+    }
+
+    .header-mini .mini-link:hover {
+        color: #ff4f4f;
+    }
+
+    footer[role="contentinfo"] {
+        border-top-color: #333;
+        color: #888;
+    }
+
+    footer[role="contentinfo"] a {
+        color: #aaa;
+        border-bottom-color: #444;
+    }
+
+    footer[role="contentinfo"] a:hover {
+        color: #ff4f4f;
+        border-bottom-color: #ff4f4f;
+    }
+
+    body.section-listening article h1[itemprop="headline"] { 
+        color: #fff; 
+    }
+    
+    body.section-listening article [itemprop="articleBody"] > p:first-of-type { 
+        color: #ccc; 
+    }
+
+    body.section-listening article [itemprop="articleBody"] a {
+        color: #ff4f4f;
+        border-bottom-color: rgba(255, 79, 79, 0.3);
+    }
+
+    body.section-listening article [itemprop="articleBody"] a:hover {
+        background-color: rgba(255, 79, 79, 0.1);
+        border-bottom-color: #ff4f4f;
+    }
+
+    body.section-listening article [itemprop="articleBody"] h2 {
+        color: #fff;
+        border-bottom-color: #444;
+    }
+
+    body.section-listening article [itemprop="articleBody"] h3 { 
+        color: #999; 
+    }
+
+    body.section-listening article [itemprop="articleBody"] li::before { 
+        color: #ff4f4f; 
+    }
+
+    body.section-listening article [itemprop="articleBody"] hr::after { 
+        color: #444; 
+    }
+
+    body.section-listening article [itemprop="articleBody"] details[open] {
+        background-color: #222224;
+        border-left-color: #ff4f4f;
+        color: #bbb;
+    }
+
+    body.section-listening article [itemprop="articleBody"] summary {
+        color: #aaa;
+        background-color: #222224;
+        border-color: transparent;
+    }
+
+    body.section-listening article [itemprop="articleBody"] summary::before { 
+        color: #ff4f4f; 
+    }
+
+    body.section-listening article [itemprop="articleBody"] summary:hover {
+        color: #fff;
+        background-color: #2a2a2d;
+        border-color: #444;
+    }
+
+    body.section-listening article [itemprop="articleBody"] summary:focus {
+        box-shadow: 0 0 0 2px rgba(255, 79, 79, 0.4);
+    }
+}
