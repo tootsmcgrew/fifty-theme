@@ -1,3 +1,0 @@
-<h2><txp:title /></h2>
-<p class="last-updated"><em>Last updated: <txp:posted format="%B %d, %Y" /></em></p>
-<txp:body />

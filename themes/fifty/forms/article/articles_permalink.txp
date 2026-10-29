@@ -1,5 +1,0 @@
-<article class="single-article <txp:if_article_category number="1">category-<txp:category1 title="0" /></txp:if_article_category><txp:if_article_category number="2"> category-<txp:category2 title="0" /></txp:if_article_category>" itemscope itemtype="https://schema.org/BlogPosting">
-    <h1 itemprop="headline"><txp:title /></h1>
-    <p class="meta"><time itemprop="datePublished" datetime="<txp:posted format='iso8601' />"><txp:posted format="%B %d, %Y" /></time></p>
-    <div itemprop="articleBody"><txp:body /></div>
-</article>

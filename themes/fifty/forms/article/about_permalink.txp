@@ -1,9 +1,0 @@
-<article class="single-about" itemscope itemtype="https://schema.org/AboutPage">
-    <header class="entry-header">
-        <h1 class="entry-title" itemprop="name"><txp:title /></h1>
-    </header>
-
-    <div class="entry-content" itemprop="mainEntityOfPage">
-        <txp:body />
-    </div>
-</article>
