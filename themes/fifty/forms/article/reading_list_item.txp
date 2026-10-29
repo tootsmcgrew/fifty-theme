@@ -1,0 +1,32 @@
+<li class="reading-entry" id="reading-<txp:article_id />" style="margin-bottom: 2.5em; list-style-type: none;">
+    
+    <h3 style="margin-bottom: 0.25em; font-size: 1.25em;">
+        <a href="<txp:permlink />"><strong><txp:title /></strong></a>
+    </h3>
+    
+    <p class="meta" style="font-size: 0.9em; color: #666; margin-top: 0; margin-bottom: 0.75em;">
+        
+        <txp:if_custom_field name="medium">
+            <span class="reading-medium" style="font-variant: small-caps; letter-spacing: 0.05em; font-weight: bold;">
+                <txp:custom_field name="medium" />
+            </span>
+            <span class="meta-divider" style="color: #ccc; margin: 0 0.4em;">•</span>
+        </txp:if_custom_field>
+        
+        <time datetime="<txp:posted format='iso8601' />"><txp:posted format="%b %d, %Y" /></time>
+        
+        <txp:if_keywords>
+            <span class="meta-divider" style="color: #ccc; margin: 0 0.4em;">•</span>
+            <span class="reading-keywords" style="font-style: italic;">
+                Tags: <txp:keywords break=", " link="section" section="reading" />
+            </span>
+        </txp:if_keywords>
+    </p>
+    
+    <txp:if_excerpt>
+        <div class="reading-excerpt" style="font-size: 0.95em; line-height: 1.5; color: #333; padding-left: 0.5em; border-left: 2px solid #eee; margin-bottom: 0.5em;">
+            <txp:excerpt />
+        </div>
+    </txp:if_excerpt>
+    
+</li>

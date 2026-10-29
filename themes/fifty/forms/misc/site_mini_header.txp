@@ -1,0 +1,17 @@
+    <!-- ========================================== -->
+    <!-- MINI-HEADER (Drill-Down / Permalink Views) -->
+    <!-- ========================================== -->
+    <header class="header-mini">
+        <div class="mini-nav-left">
+            <a href="<txp:site_url />">
+                <img src="/assets/images/wolf.svg" alt="Return home" class="logo small-logo">
+            </a>
+        </div>
+        
+        <nav class="mini-nav-links">
+            <a href="<txp:site_url />" class="mini-link">Home</a>
+            
+            <span class="mini-separator">/</span>
+            <a href="<txp:section url='1' />" class="mini-link"><txp:section title="1" /></a>
+        </nav>
+    </header>

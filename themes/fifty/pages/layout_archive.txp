@@ -1,0 +1,16 @@
+<!-- In layout_archive page -->
+<body>
+    <txp:if_individual_article>
+        <txp:output_form form="site_mini_header" />
+    <txp:else />
+        <txp:output_form form="site_header" />
+    </txp:if_individual_article>
+
+    <div class="wrapper">
+        <main id="main">
+            <!-- Your Master Router kicks in here -->
+            <txp:article listform="article_listing" />
+        </main>
+    </div>
+    <txp:output_form form="site_footer" />
+</body>

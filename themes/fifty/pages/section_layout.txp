@@ -1,0 +1,95 @@
+<txp:output_form form="html_head" />
+<body class="<txp:if_individual_article>permalink-page <txp:if_article_category number="1">category-<txp:category1 title="0" /></txp:if_article_category><txp:if_article_category number="2"> category-<txp:category2 title="0" /></txp:if_article_category><txp:else />listing-page</txp:if_individual_article> section-<txp:section />" itemscope itemtype="https://schema.org/CollectionPage">
+
+    <!-- THE HEADER SWITCH -->
+    <txp:if_individual_article>
+        <txp:output_form form="site_mini_header" />
+    <txp:else />
+        <txp:output_form form="site_header" />
+    </txp:if_individual_article>
+
+    <div class="wrapper">
+        <div class="container <txp:if_section name="notes"><txp:if_individual_article><txp:else />has-sidebar</txp:if_individual_article></txp:if_section>">
+
+            <!-- SIDEBAR ARCHIVE (Only on Notes list view) -->
+            <txp:if_section name="notes">
+                <txp:if_individual_article><txp:else />
+                    <aside class="sidebar">
+                        <nav class="archive-nav" aria-label="Notes archive">
+                            <h3>Notes Archive</h3>
+                            
+                            <txp:variable name="close_details" value="" />
+                            
+                            <txp:article_custom section="notes" sort="Posted desc" limit="9999" wraptag="" break="">
+                                <txp:if_different test='<txp:posted format="%Y" />'>
+                                    <txp:if_variable name="close_details" value="yes">
+                                        </ul></details>
+                                    </txp:if_variable>
+                                    
+                                    <details class="archive-year">
+                                        <summary><txp:posted format="%Y" /></summary>
+                                        <ul class="archive-months">
+                                    
+                                    <txp:variable name="close_details" value="yes" />
+                                </txp:if_different>
+                                
+                                <txp:if_different test='<txp:posted format="%Y-%m" />'>
+                                    <li class="archive-month">
+                                        <a href="<txp:section url="1" />?month=<txp:posted format="%Y-%m" />"><txp:posted format="%B" /></a>
+                                    </li>
+                                </txp:if_different>
+                                
+                                <txp:if_last_article>
+                                    </ul></details>
+                                </txp:if_last_article>
+                            </txp:article_custom>
+                        </nav>
+                    </aside>
+                </txp:if_individual_article>
+            </txp:if_section>
+
+            <main id="main" aria-label="<txp:text item="main_content" />">
+            
+                <!-- DYNAMIC PER-SECTION LIMITS -->
+                <txp:if_section name="articles, reading">
+                    <!-- Complete index for Accordion sections -->
+                    <txp:article sort="Category1 asc, Posted desc" form="article_display" listform="article_display" limit="999" />
+                <txp:else />
+                    <txp:if_section name="links">
+                        <!-- Desktop Grid layout limit -->
+                        <txp:article form="article_display" listform="article_display" limit="14" />
+                    <txp:else />
+                        <txp:if_section name="notes">
+                            <!-- Stream layout + Infinite Scroll trigger -->
+                            <txp:variable name="load_infinite_scroll" value="true" />
+                            <txp:article form="article_display" listform="article_display" limit="24" />
+                        <txp:else />
+                            <!-- Fallback default -->
+                            <txp:article form="article_display" listform="article_display" limit="14" />
+                        </txp:if_section>
+                    </txp:if_section>
+                </txp:if_section>
+            
+                <!-- Pagination (Only on list views when pages > 1) -->
+                <txp:if_individual_article><txp:else />
+                    <txp:evaluate test="newer,older">
+                        <nav class="paginator" aria-label="<txp:text item='page_nav' />">
+                            <txp:newer rel="prev" class="prev-link"><txp:text item="newer" /></txp:newer>
+                            <txp:older rel="next" class="next-link"><txp:text item="older" /></txp:older>
+                        </nav>
+                    </txp:evaluate>
+                </txp:if_individual_article>
+            
+            </main>
+
+        </div>
+    </div>
+
+    <txp:output_form form="site_footer" />
+
+    <!-- Infinite Scroll Script loaded conditionally for Notes -->
+    <txp:if_variable name="load_infinite_scroll" value="true">
+        <script src="/assets/js/infinite-scroll.js" defer></script>
+    </txp:if_variable>
+</body>
+</html>

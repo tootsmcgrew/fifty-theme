@@ -1,0 +1,143 @@
+<txp:output_form form="html_head" />
+<body class="front-page" itemscope itemtype="https://schema.org/WebPage">
+
+    <txp:output_form form="site_header" />
+
+    <div class="wrapper">
+        <div class="container">
+            <main id="main" aria-label="<txp:text item="main_content" />">
+                
+                <section class="welcome" itemprop="description">
+                    <h2>Welcome</h2>
+                    <p>Welcome to my hand-crafted home on the web. Stay awhile and thanks for stopping by.</p>
+                </section>
+                
+                <section class="recent-links" aria-label="Recent Links">
+                    <h2>Recent Links & Discussions</h2>
+                    
+                    <div class="links-grid">
+                        <txp:article_custom section="links" limit="4">
+                            <article class="link-card">
+                                <header class="link-card-header">
+                                    <h3 class="link-title">
+                                        <txp:if_custom_field name="external_url">
+                                            <a href="<txp:custom_field name="external_url" />" class="external-link" target="_blank" rel="noopener">
+                                                <txp:title /> <span class="external-icon" aria-hidden="true">↗</span>
+                                            </a>
+                                        <txp:else />
+                                            <a href="<txp:permlink />"><txp:title /></a>
+                                        </txp:if_custom_field>
+                                    </h3>
+                
+                                    <txp:if_custom_field name="text_author">
+                                        <p class="link-author">by <txp:custom_field name="text_author" /></p>
+                                    </txp:if_custom_field>
+                                </header>
+                
+                                <txp:if_excerpt>
+                                    <div class="link-excerpt">
+                                        <txp:excerpt />
+                                    </div>
+                                </txp:if_excerpt>
+                
+                                <footer class="link-card-footer">
+                                    <time datetime="<txp:posted format='iso8601' />"><txp:posted format="%b %d, %Y" /></time>
+                                    <txp:if_custom_field name="external_url">
+                                        <span class="meta-divider">•</span>
+                                        <a href="<txp:permlink />" class="permalink-note" title="View discussion/permalink">Permalink & Discussion</a>
+                                    </txp:if_custom_field>
+                                </footer>
+                            </article>
+                        </txp:article_custom>
+                    </div>
+
+                    <txp:output_form form="recent_comments_block" />
+                </section>
+                
+                <section class="home-bookmarks" aria-label="Bookmarks">
+                    <h2>Quick Bookmark Linklist</h2>
+                    <ul class="bookmarks-list">
+                        <txp:linklist category="bookmarks" limit="5" sort="date desc">
+                            <li class="bookmark-item">
+                                <div class="bookmark-header">
+                                    <a href="<txp:link_url />" class="bookmark-title" rel="external" target="_blank">
+                                        <txp:link_name /> <span class="external-icon" aria-hidden="true">↗</span>
+                                    </a>
+                                    <span class="meta-divider">—</span>
+                                    <time datetime="<txp:link_date format='iso8601' />"><txp:link_date format="%b %d, %Y" /></time>
+                                </div>
+                                
+                                <txp:link_description wraptag="div" class="bookmark-description" />
+                            </li>
+                        </txp:linklist>
+                    </ul>
+                </section>
+                
+                <div class="curated-shelves">
+                
+                    <!-- Shelf 1: Blogroll -->
+                    <section class="shelf-group" aria-label="Blogroll">
+                        <h3>Blogroll & Neighbors</h3>
+                        <ul class="shelf-list">
+                            <txp:linklist category="blogroll" limit="6" sort="linksort asc">
+                                <li class="shelf-item">
+                                    <a href="<txp:link_url />" rel="external me" target="_blank">
+                                        <txp:link_name /> <span class="external-icon" aria-hidden="true">↗</span>
+                                    </a>
+                                    <txp:link_description wraptag="span" class="shelf-note" />
+                                </li>
+                            </txp:linklist>
+                        </ul>
+                    </section>
+                
+                    <!-- Shelf 2: Music & Listening -->
+                    <section class="shelf-group" aria-label="Music and Listening">
+                        <h3>Music</h3>
+                        <ul class="shelf-list">
+                            <txp:linklist category="music" limit="6" sort="date desc">
+                                <li class="shelf-item">
+                                    <a href="<txp:link_url />" rel="external" target="_blank">
+                                        <txp:link_name /> <span class="external-icon" aria-hidden="true">↗</span>
+                                    </a>
+                                    <txp:link_description wraptag="span" class="shelf-note" />
+                                </li>
+                            </txp:linklist>
+                        </ul>
+                    </section>
+                
+                    <!-- Shelf 3: Around the Web (Tinkerings & Finds) -->
+                    <section class="shelf-group" aria-label="Around the Web">
+                        <h3>Around the Web</h3>
+                        <ul class="shelf-list">
+                            <txp:linklist category="around-the-web" limit="6" sort="date desc">
+                                <li class="shelf-item">
+                                    <a href="<txp:link_url />" rel="external" target="_blank">
+                                        <txp:link_name /> <span class="external-icon" aria-hidden="true">↗</span>
+                                    </a>
+                                    <txp:link_description wraptag="span" class="shelf-note" />
+                                </li>
+                            </txp:linklist>
+                        </ul>
+                    </section>
+                
+                </div>
+
+                <section class="recent-writing" aria-label="Recent Essays">
+                    <h2>Recent Writing</h2>
+                    <ul class="writing-list">
+                        <txp:article_custom section="articles" limit="5" form="recent_writing_item" />
+                    </ul>
+                </section>
+
+                <section class="recent-notes" aria-label="Recent Notes">
+                    <h2>Recent Notes</h2>
+                    <txp:article_custom section="notes" limit="12" form="notes_home_listing" />
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <txp:output_form form="site_footer" />
+</body>
+</html>

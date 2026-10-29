@@ -1,0 +1,6 @@
+<div class="homepage-recent-comments">
+    <h3>Recent Discussion</h3>
+    <ol class="recent-comments-list">
+        <txp:recent_comments limit="5" form="recent_comments_item" />
+    </ol>
+</div>

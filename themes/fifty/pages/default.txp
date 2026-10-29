@@ -1,0 +1,27 @@
+<txp:output_form form="html_head" />
+<body class="static-page section-<txp:section />" itemscope itemtype="https://schema.org/WebPage">
+
+    <!-- Hardcoded mini-header for all static pages -->
+    <txp:output_form form="site_mini_header" />
+
+    <div class="wrapper">
+        <div class="container">
+            <main id="main">
+                
+                <txp:article limit="1">
+                    <article itemscope itemtype="https://schema.org/Article">
+                        <h1 itemprop="headline"><txp:title /></h1>
+                        
+                        <div itemprop="articleBody">
+                            <txp:body />
+                        </div>
+                    </article>
+                </txp:article>
+
+            </main>
+        </div>
+    </div>
+
+    <txp:output_form form="site_footer" />
+</body>
+</html>
